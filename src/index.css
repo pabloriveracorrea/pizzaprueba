@@ -1,0 +1,117 @@
+body {
+  background-image: url('https://img.freepik.com/vector-gratis/papel-pintado-mural-restaurante_23-2148698592.jpg?t=st=1722832475~exp=1722836075~hmac=9fbabee597894e7978df0fa4e4289340325e539c091b4553a0767049ca56dfaf&w=1380');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'arial', regular;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.navegacion {
+  box-shadow: 10px 2px 10px rgba(7, 7, 7, 0.5);
+}
+
+.pizza-spinner span {
+  animation: spin 0s;
+  font-size: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end; /* Alinea el contenido al final (derecha) */
+  padding: 50px; /* Opcional, agrega un pequeño espacio alrededor del contenido */
+}
+
+.header h1 {
+  font-size: 3em;
+  margin: 0; /* Asegura que no haya margen adicional que desplace el texto */
+}
+
+.productos {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 1500px;
+
+  border-radius: 15px;
+  background-color: rgba(40, 39, 39, 0.8);
+}
+
+.producto-card {
+  flex: 1;
+  background-color: #fff;
+  color: #010101;
+  border-radius: 10px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 4rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 30vh;
+    margin-top: 20vh;
+  }
+
+  .header h1 {
+    font-size: 2.5em;
+  }
+
+  .productos {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .producto-card {
+    margin-bottom: 1rem;
+  }
+}
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #080808;
+}
+
+.login-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 300px;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
