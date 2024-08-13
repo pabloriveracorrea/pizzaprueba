@@ -1,85 +1,141 @@
-import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Spinner from 'react-bootstrap/Spinner';
+import Form from 'react-bootstrap/Form';
+import Header from './Header';
+import { useState } from 'react';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Modal from 'react-bootstrap/Modal';
+import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
 
-const Navegacion = () => {
-  const [token, setToken] = useState(false);
-  const total = 25000;
-  const handleChange = (token) => {
-    console.log('token', token);
-    setToken({ token: !token });
+const Registro = () => {
+  const [correo, setCorreo] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [validated, setValidated] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    setValidated(false);
+    if (password.length < 6 || correo == '') {
+      if (password.length < 6) {
+        alert('La contraseña debe tener al menos 6 caracteres');
+      } else {
+        alert(
+          'El correo no debe estar vacio y debe tener el siguiente formato : a.a@gmail.com'
+        );
+      }
+      return;
+    } else if (password === confirmPassword) {
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      } else {
+        console.log('Correo:', correo);
+        console.log('Password:', password);
+        console.log('Confirmacion:', confirmPassword);
+        // alert('Formulario enviado');
+        if (correo.length > 7 && password !== '' && confirmPassword !== '') {
+          handleShow();
+        }
+      }
+
+      setValidated(true);
+    } else {
+      alert('Las contraseñas no coinciden');
+    }
   };
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark" className="navegacion">
-        <Container>
-          <Spinner role="status" className="mx-3">
-            <h3 className="pizza-spinner"> 🍕</h3>
-          </Spinner>
-          <Navbar.Brand href="#home"> Mamma Mía</Navbar.Brand>
-          <Nav
-            className="me-auto my-4 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">
-              {' '}
-              <Button variant="outline-warning" className="text-white">
-                🍕 Home
-              </Button>
-            </Nav.Link>
+      <Form
+        noValidate
+        validated={validated}
+        onSubmit={handleSubmit}
+        className="container w-50 pb-4 text-white"
+      >
+        <Header
+          titulo="Mamma Mia"
+          descripcion="Tenemos las mejores pizzas que podrás encontrar"
+        />
+        <h4 className="text-center text-white">Registro</h4>
+        <Row className="mb-3">
+          <Form.Group controlId="validationCustomUsername" className="mt-2">
+            <Form.Label>Correo electrónico</Form.Label>
+            <InputGroup hasValidation>
+              <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+              <Form.Control
+                type="email"
+                placeholder="Correo"
+                aria-describedby="inputGroupPrepend"
+                required
+                onChange={(e) => setCorreo(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Por favor ingresa un correo.
+              </Form.Control.Feedback>
+            </InputGroup>
+          </Form.Group>
 
-            <Nav hidden={token ? false : true} onChange={handleChange}>
-              <Nav.Link href="#action2">
-                {' '}
-                <Button variant="outline-warning" className="text-white">
-                  🔒 Profile
-                </Button>
-              </Nav.Link>
-              <Nav.Link href="#action3">
-                {' '}
-                <Button
-                  variant="outline-warning"
-                  onClick={() => setToken(!token)}
-                  className="text-white"
-                >
-                  🔒 Logout
-                </Button>
-              </Nav.Link>
-            </Nav>
-            <Nav hidden={token ? true : false} onChange={handleChange}>
-              <Nav.Link href="#action4">
-                {' '}
-                <Button
-                  variant="outline-warning"
-                  onClick={() => setToken(!token)}
-                  className="text-white"
-                >
-                  🔐 Login
-                </Button>
-              </Nav.Link>
-              <Nav.Link href="#action5">
-                {' '}
-                <Button variant="outline-warning" className="text-white">
-                  🔐 Register
-                </Button>
-              </Nav.Link>
-            </Nav>
-          </Nav>
-          <Nav className="justify-content-end ms-auto">
-            <Nav.Link href="#action6">
-              {' '}
-              <Button variant="outline-light">
-                🛒 Total: $ {total.toLocaleString()}
-              </Button>
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+          <Form.Group controlId="formGroupPassword" className="my-2">
+            <Form.Label>Contraseña</Form.Label>
+            <InputGroup hasValidation>
+              <Form.Control
+                type="password"
+                placeholder="Contraseña"
+                aria-describedby="inputGroupPrepend"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Por favor ingresa la contraseña.
+              </Form.Control.Feedback>
+            </InputGroup>
+          </Form.Group>
+
+          <Form.Group controlId="formGroupPassword" className="my-2">
+            <Form.Label>Confirmar contraseña</Form.Label>
+            <InputGroup hasValidation>
+              <Form.Control
+                type="confirmPassword"
+                placeholder="Conformar contraseña"
+                aria-describedby="inputGroupPrepend"
+                required
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Por favor ingresa confirmación de contraseña.
+              </Form.Control.Feedback>
+            </InputGroup>
+          </Form.Group>
+        </Row>
+        <Button type="submit" className="bg-warning">
+          Registrar
+        </Button>
+        <Modal show={show} onHide={handleClose} className="bg-dark">
+          <Modal.Header closeButton>
+            <Modal.Title>Registro exitoso!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            <Image
+              src="https://media.istockphoto.com/id/1194550265/es/vector/concepto-del-servicio-de-entrega-r%C3%A1pida-de-pizza-hombre-fuera-del-monitor-de-pantalla-las.jpg?s=612x612&w=0&k=20&c=n3fi1qt-QXNKq4wdXsFcvewj1VZU8gfnpU7YCks4flY="
+              roundedCircle
+              className="w-75"
+            />
+            <p>Felicidades, registro exitoso!</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="warning" onClick={handleClose}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </Form>
     </>
   );
 };
-export default Navegacion;
+
+export default Registro;
