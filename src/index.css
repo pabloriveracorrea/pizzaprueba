@@ -1,5 +1,5 @@
 body {
-  background-image: url('https://img.freepik.com/vector-gratis/papel-pintado-mural-restaurante_23-2148698592.jpg?t=st=1722832475~exp=1722836075~hmac=9fbabee597894e7978df0fa4e4289340325e539c091b4553a0767049ca56dfaf&w=1380');
+  background-image: url('./assets/img/delicious-neapolitan-pizza-board.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'arial', regular;
@@ -77,15 +77,14 @@ body {
 }
 
 .footer-container {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #080808;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-text {
+  padding: 5px; /* Reduce el padding */
+  font-size: 0.8rem; /* Reduce el tamaño de la fuente */
+  margin: 0; /* Asegura que no haya margen adicional */
 }
 
 .login-container {
@@ -112,6 +111,25 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(4, 4, 4, 0.5);
   z-index: 999;
+}
+
+.productos {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 3rem;
+  box-shadow: 4px 10px 20px rgb(11, 11, 11);
+  border-radius: 20px;
+  background-color: rgba(40, 39, 39, 0.896);
+}
+
+.card-pizza {
+  background-color: white; /* Fondo blanco */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-pizza:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }

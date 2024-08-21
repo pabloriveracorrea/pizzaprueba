@@ -5,7 +5,7 @@ import Spinner from 'react-bootstrap/Spinner';
 // eslint-disable-next-line react/prop-types
 function CardPizza({ img, name, ingredientes, price }) {
   return (
-    <Card border="warning" className="text-center m-3">
+    <Card border="warning" className="text-center m-3 card-pizza">
       <Card.Img variant="top" src={img} className="img-fluid" />
       <Card.Body>
         <Card.Title>{name}</Card.Title>

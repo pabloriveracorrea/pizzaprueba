@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <Header
         titulo="Pizzería Mamma Mia"
-        descripcion="Tenemos las mejores pizzas que podrás encontrar"
+        descripcion="Tenemos las mejores pizzas"
       />
       <Grilla />
     </>
