@@ -9,7 +9,7 @@ body {
 }
 
 .navegacion {
-  box-shadow: 10px 2px 10px rgba(7, 7, 7, 0.5);
+  box-shadow: 10px 2px 10px rgba(255, 252, 252, 0.5);
 }
 
 .pizza-spinner span {
@@ -132,4 +132,7 @@ body {
 .card-pizza:hover {
   transform: translateY(-10px);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+.navbar-red {
+  background-color: #3a0404; /* Color rojo personalizado */
 }
