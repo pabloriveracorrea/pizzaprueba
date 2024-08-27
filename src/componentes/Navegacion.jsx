@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-const Navegacion = () => {
+const Navegacion = ({ onCartClick }) => {
   const [token, setToken] = useState(false);
   const total = 25000;
   const handleChange = (token) => {
